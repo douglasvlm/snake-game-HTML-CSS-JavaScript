@@ -1,0 +1,30 @@
+body{
+    height: 95vh;
+    width: 95;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(16, 122, 16);
+    
+}
+
+canvas {
+    padding-bottom: 20px;
+}
+
+.button {
+    background-color: #4CAF50;
+    font-size: 20px;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 1px;
+    border: 2px solid #4CAF50;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button:hover {
+    background-color: #ffffff; /* Green */
+    color: rgb(36, 172, 9);
+  }
