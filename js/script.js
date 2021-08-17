@@ -2,7 +2,7 @@ let canvas = document.getElementById("snake");
 let context = canvas.getContext("2d");
 let box = 32;
 let snake = [];
-
+let score = 1;
 snake[0] = {
     x: 8 * box,
     y: 8 * box
@@ -42,11 +42,16 @@ function snakeComand (event){
 
 
 function startGame(){
-    if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
+    /* if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
     if(snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
     if(snake[0].y > 15 * box && direction == "down") snake[0].y = 0;
-    if(snake[0].y < 0 && direction == "up") snake[0].y = 16 * box;
-
+    if(snake[0].y < 0 && direction == "up") snake[0].y = 16 * box; */
+    if((snake[0].x > 15 * box) || (snake[0].x < 0) || (snake[0].y > 15 * box) || (snake[0].y < 0)){
+        clearInterval(game);
+            alert("Game Over :(")
+    }
+    
+    
     for(i = 1; i < snake.length; i++){
         if(snake[0].x == snake[i].x && snake[0].y ==snake[i].y){
             clearInterval(game);
@@ -69,21 +74,19 @@ function startGame(){
     if(snakeX != food.x || snakeY != food.y){
         snake.pop();
     }else{
-        food.x = Math.floor(Math.random() * 15 + 1) * box,
-        food.y = Math.floor(Math.random() * 15 + 1) * box
+        food.x = Math.floor(Math.random() * 15 + 1) * box;
+        food.y = Math.floor(Math.random() * 15 + 1) * box;
+        document.getElementById('score').innerHTML = "SCORE : "  + score++;
     }
-
-    snake.pop();
-
     let newHead = {
         x: snakeX,
         y: snakeY
     }
 
-    snake.unshift(newHead, 100);
+    snake.unshift(newHead);
 }
 
-let game = setInterval(startGame, 200);
+let game = setInterval(startGame, 120);
 
 function refreshPage(){
     window.location.reload();
